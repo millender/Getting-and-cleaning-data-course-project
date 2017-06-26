@@ -19,14 +19,14 @@ subject <- subject[, subject:=factor(subject)]
 # pull the activity data into R as factors and name this column "activity"
 activity <- get.data("y")
 colnames(activity) <- "activity"
-activity.list <- fread(paste0(wd, "activity_labels.txt"))
+activity.list <- fread(paste0(dir, "activity_labels.txt"))
 activity <- activity[, activity:=factor(activity,
                            levels = activity.list[, V1],
                            labels = activity.list[, V2])]
 
 # pull the data into R and add descriptive column names
 features <- get.data("X")
-colnames(features) <- unlist(fread(paste0(wd, "features.txt"))[, 2])
+colnames(features) <- unlist(fread(paste0(dir, "features.txt"))[, 2])
 
 # combine subject, activity, and features into one data.table
 merged <- cbind(subject, activity, features)
@@ -50,3 +50,4 @@ means.cols <- grep("[M|m]ean",colnames(mean.and.standard.deviation),
 means.cols <- c("subject", "activity", means.cols)
 tidy <- mean.and.standard.deviation[, ..means.cols]
 tidy <- tidy[, lapply(.SD, mean), by=c("subject", "activity")]
+write.table(tidy, "summarydata.txt", row.names = FALSE)
