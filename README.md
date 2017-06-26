@@ -1,6 +1,5 @@
-===============================================================================
 Coursera Getting and Cleaning Data Course Project
-===============================================================================
+===========================================
 
 run_analyis.R contains all of the R code used to generate the final data set.
 
@@ -34,7 +33,6 @@ the mean by subject and activity, storing this in a new data.table called
 'tidy'.
 
 
-=============================================
 The Github repo contains the following files:
 =============================================
 
@@ -47,10 +45,9 @@ run_analysis.R
 tidy_data.RData
 
 
-===========================================
 For reference the Github repo also contains
 these files from the original data download
-===========================================
+========================================
 
 - 'README.txt'
 
