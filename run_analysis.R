@@ -1,13 +1,13 @@
 # Load libraries
 library(data.table)
 
-# set working directory
-wd <- "/home/user/data/UCI HAR Dataset/"
+# set directory, test and train should be subdirectories of this one
+dir <- "/UCI HAR Dataset/"
 
 # function to pull the txt files into R and merge testing and training groups
 get.data <- function(var) {
-    train.file <- paste0(wd, "train/", var, "_train.txt")
-    test.file <-  paste0(wd, "test/",  var, "_test.txt")
+    train.file <- paste0(dir, "train/", var, "_train.txt")
+    test.file <-  paste0(dir, "test/",  var, "_test.txt")
     rbindlist(list(fread(train.file), fread(test.file)))
 }
 
